@@ -39,6 +39,9 @@ var dusty = (function(global, document, undefined) {
         element.attachEvent("on" + event, attachHandler);
       }
     },
+    customEvent : function (element, customEventName) {
+      element.dispatchEvent(new CustomEvent(customEventName));
+    },
     element : function (element, markup) {
       var result = false;
       var selectorCriteria = null;
