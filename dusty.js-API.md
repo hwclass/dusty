@@ -1,6 +1,6 @@
 #dusty.js Library API - 1.0.0
 
-##This document is developed for describing the AKQA - DOM Traversing library. You can reach every methods, functions, declerations and iterations from the every title of each section like “Methods”, “Declerations” and etc.
+###This document is developed for describing the AKQA - DOM Traversing library. You can reach every methods, functions, declerations and iterations from the every title of each section like “Methods”, “Declerations” and etc.
 
 ##Declerations
 
