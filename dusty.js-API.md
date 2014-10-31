@@ -6,7 +6,7 @@ This document is developed for describing the AKQA - DOM Traversing library. You
 
 ###config
 
-	messages
+	**messages**
 
 		This is used to wrap the config constants like messages.
 
