@@ -26,6 +26,6 @@ dusty.get.tagName('h1');
 ###Set the value of an element.
 <pre lang="javascript">
 <code>
-dusty.get.tagName('h1');
+dusty.set.value(dusty.get.withId('testId'), 'This is an input element.');
 </pre>
 </code>
