@@ -115,7 +115,7 @@ var dusty = (function(global, document, undefined) {
       document.getElementsByTagName(tagName).remove();
     },
     event : function (element, event, fn) {
-      element.removeEventListener(event);
+      element.removeEventListener(event, fn);
     }
   };
 
