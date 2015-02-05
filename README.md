@@ -29,3 +29,10 @@ dusty.get.tagName('h1');
 dusty.set.value(dusty.get.withId('testId'), 'This is an input element.');
 </pre>
 </code>
+
+###Make an AJAX request (with GET).
+<pre lang="javascript">
+<code>
+dusty.ajax.request('GET', 'url', {dummyData : 'dummyData'}, function (data) { console.dir(data); });
+</pre>
+</code>
