@@ -14,6 +14,9 @@
  */
 var dusty = (function(global, document, undefined) {
   
+  /*
+   * Configuration object wrapper
+   */
   var config = {
     messages : {
       selectorCriteriaError : 'There is no any element specified.',
@@ -21,6 +24,10 @@ var dusty = (function(global, document, undefined) {
     }
   };
 
+  /*
+   * It is used to bind events and adding markup code into elements
+   * Custom events are controlled within their context in the future
+   */
   var add = {
     event : function(element, event, fn) {
       function listenHandler(e) {
@@ -61,6 +68,9 @@ var dusty = (function(global, document, undefined) {
     }
   };
 
+  /*
+   * It is used to wrap the methods to make ajax requests
+   */
   var ajax = {
     request : function (method, url, data, callback) {
       var xhrReq;
@@ -93,6 +103,9 @@ var dusty = (function(global, document, undefined) {
     }
   };
 
+  /*
+   * DOM element traversing wrapper object
+   */
   var get = {
     withId : function(id) {
       return document.getElementById(id);
@@ -107,6 +120,9 @@ var dusty = (function(global, document, undefined) {
     }
   };
   
+  /*
+   * It is used for removing elements in the DOM 
+   */
   var remove = {
     withId : function (id) {
       var element = document.getElementById(id);
@@ -128,6 +144,9 @@ var dusty = (function(global, document, undefined) {
     }
   };
 
+  /*
+   * It is used to set some values, attributes and HTML content into DOM elements 
+   */
   var set = {
     value : function(element, val) {
       if(element.tagName && element.tagName.toLowerCase() == "textarea" || element.tagName.toLowerCase() == "input") {
@@ -153,6 +172,9 @@ var dusty = (function(global, document, undefined) {
     }
   };
 
+  /*
+   * Utility methods wrapper
+   */
   var utils = {
     isUndefined : function(obj) {
       return (typeof obj === 'undefined');
