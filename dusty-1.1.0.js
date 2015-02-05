@@ -73,7 +73,7 @@ var dusty = (function(global, document, undefined) {
       xhrReq.addEventListener("load", transferComplete, false);
       xhrReq.onreadystatechange = function() {
         if (xhrReq.readyState == 4 && xhrReq.status == 200) {
-          callback(xhrReq.responseText);
+          callback(JSON.parse(xhrReq.responseText));
         }
       }
       xhrReq.open(method, url, true);
