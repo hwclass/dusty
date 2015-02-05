@@ -73,7 +73,12 @@ var dusty = (function(global, document, undefined) {
       xhrReq.addEventListener("load", transferComplete, false);
       xhrReq.onreadystatechange = function() {
         if (xhrReq.readyState == 4 && xhrReq.status == 200) {
-          callback(JSON.parse(xhrReq.responseText));
+          var result = xhrReq.responseText;
+          var responseContentType = xhrReq.getResponseHeader('content-type');
+          if (responseContentType.indexOf('json') > -1) {
+            result = JSON.parse(result)
+          }
+          callback(result);
         }
       }
       xhrReq.open(method, url, true);
