@@ -19,7 +19,7 @@ dusty.get.withClass('testClass');
 ###Get elements using their tag names.
 <pre lang="javascript">
 <code>
-dusty.get.tagName('h1');
+dusty.get.withTagName('h1');
 <code>
 </pre>
 
