@@ -40,6 +40,8 @@ dusty.add.customEvent(dusty.get.withClass('testClass'), 'click', function () { c
 ###Make an AJAX request (with GET).
 <pre lang="javascript">
 <code>
-dusty.ajax.request('GET', 'url', {dummyData : 'dummyData'}, function (data) { console.dir(data); });
+	dusty.ajax.request('GET', 'url', {dummyData : 'dummyData'}, function (data) {
+		console.dir(data);
+	});
 </pre>
 </code>
