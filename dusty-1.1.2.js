@@ -50,7 +50,7 @@ var dusty = (function(global, document, undefined) {
         result = dusty.config.messages.selectorCriteriaError;
       } else {
         if (!dusty.utils.isUndefined(dusty.get.withId(element)) && !dusty.utils.isNull(dusty.get.withId(element))) {
-          element = dusty.get.withId(element);
+          element = dusty.get.withId(elHTMLement);
         } else if (!dusty.utils.isUndefined(dusty.get.withClass(element)) && !dusty.utils.isNull(dusty.get.withClass(element))) {
           element = dusty.get.withClass(element);
         } else {
@@ -127,7 +127,7 @@ var dusty = (function(global, document, undefined) {
       }
     },
     HTML : function(element, markup) {
-      var el = element[0],
+      var el = element,
           result = false;
       if (typeof el !== "undefined" && el !== null) {
         if (!dusty.utils.isUndefined(el) && !dusty.utils.isNull(el)) {
