@@ -37,6 +37,13 @@ dusty.add.customEvent(dusty.get.withClass('testClass'), 'click', function () { c
 </code>
 </pre>
 
+###Bind custom events to an element.
+<pre lang="javascript">
+<code>
+dusty.add.customEvent(dusty.get.withClass('testClass'), 'click', function () { console.log('clicked element.'); });
+</code>
+</pre>
+
 ###Make an AJAX request (with GET).
 <pre lang="javascript">
 <code>
