@@ -77,8 +77,7 @@
   var remove = {
 
     byId : function (id) {
-      var element = document.getElementById(id);
-      element.parentNode.removeChild(element);
+      element.parentNode.removeChild(document.getElementById(id));
     },
 
     byClass : function (nodes, className) {
@@ -88,6 +87,14 @@
     withTagName : function (tagName) {
       var elements = document.getElementsByTagName(tagName);
       document.getElementsByTagName(tagName).remove();
+    },
+
+    all : function (nodes) {
+      for (var counterForNodes = 0, len = nodes.length; counterForNodes < len; counterForNodes++) {
+        if (nodes[counterForNodes]) {
+          nodes[counterForNodes].parentNode.removeChild(nodes[counterForNodes]);
+        }
+      }
     }
 
   };
