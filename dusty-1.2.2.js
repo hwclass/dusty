@@ -66,7 +66,7 @@
     class : function (nodes, className) {
       for (var counterForNodes = 0, len = nodes.length; counterForNodes < len; counterForNodes++) {
         var tempElement = nodes[counterForNodes];
-        if (!utils.hasClass(tempElement), className) {
+        if (!has.class(tempElement), className) {
           nodes[counterForNodes].className += ' ' + className;
         }
       }
@@ -172,6 +172,12 @@
     }
   };
 
+  var has = {
+    class : function (node, className) {
+      return (" " + node.className.split(/\s+/g).join(" ") + " ").indexOf(" " + className + " ") > -1;
+    }
+  };
+
   var utils = {
     isUndefined : function(obj) {
       return (typeof obj === 'undefined');
@@ -181,9 +187,6 @@
     },
     isEmptyString : function (obj) {
       return (obj === '');
-    },
-    hasClass : function (node, className) {
-      return (" " + node.className.split(/\s+/g).join(" ") + " ").indexOf(" " + className + " ") > -1;
     }
   };
 
