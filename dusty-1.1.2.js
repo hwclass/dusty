@@ -40,9 +40,11 @@
         el.attachEvent("on" + event, fn);
       }
     },
+
     customEvent : function (element, customEventName) {
       element.dispatchEvent(new CustomEvent(customEventName));
     },
+
     element : function (element, markup) {
       var result = false;
       var selectorCriteria = null;
@@ -59,7 +61,17 @@
       }
       element.innerHTML += markup;
       return (dusty.utils.isUndefined(result) || dusty.utils.isNull(result) ? console.log(result) : undefined);
+    },
+
+    class : function (nodes, className) {
+      for (var counterForNodes = 0, len = nodes.length; counterForNodes < len; counterForNodes++) {
+        var tempElement = nodes[counterForNodes];
+        if (!utils.hasClass(tempElement), className) {
+          nodes[counterForNodes].className += ' ' + className;
+        }
+      }
     }
+
   };
 
   var ajax = {
@@ -162,6 +174,9 @@
     },
     isEmptyString : function (obj) {
       return (obj === '');
+    },
+    hasClass : function (node, className) {
+      return (" " + node.className.split(/\s+/g).join(" ") + " ").indexOf(" " + className + " ") > -1;
     }
   };
 
