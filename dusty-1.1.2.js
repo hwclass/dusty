@@ -8,11 +8,11 @@
  * http://www.opensource.org/licenses/mit-license.php
  *
  * Launch  : October 2014
- * Version : 1.0.0
- * Released: 2014
+ * Version : 1.1.2
+ * Released: 2015
  *
  */
-var dusty = (function(global, document, undefined) {
+;var dusty = (function(global, document, undefined) {
 
   var config = {
     messages : {
@@ -49,8 +49,8 @@ var dusty = (function(global, document, undefined) {
       if (dusty.utils.isUndefined(markup) || dusty.utils.isNull(markup)) {
         result = dusty.config.messages.selectorCriteriaError;
       } else {
-        if (!dusty.utils.isUndefined(dusty.get.withId(element)) && !dusty.utils.isNull(dusty.get.withId(element))) {
-          element = dusty.get.withId(elHTMLement);
+        if (!dusty.utils.isUndefined(dusty.get.byId(element)) && !dusty.utils.isNull(dusty.get.byId(element))) {
+          element = dusty.get.byId(elHTMLement);
         } else if (!dusty.utils.isUndefined(dusty.get.withClass(element)) && !dusty.utils.isNull(dusty.get.withClass(element))) {
           element = dusty.get.withClass(element);
         } else {
@@ -63,6 +63,7 @@ var dusty = (function(global, document, undefined) {
   };
 
   var ajax = {
+
     request : function (method, url, data, callback) {
       var xhrReq;
       var returnedData = null;
@@ -84,38 +85,47 @@ var dusty = (function(global, document, undefined) {
       }
       xhrReq.send(postData);
       var transferComplete = function () {
-        console.log('transferComplete');
+        return true;
       }
     }
+
   };
 
   var get = {
-    withId : function(id) {
+
+    byId : function(id) {
       return document.getElementById(id);
     },
+
     withClass : function(className) {
       var elements = document.getElementsByClassName(className);
       return (elements.length===0?undefined:elements);
       return this;
     },
+
     withTagName : function(tagName) {
       var elements = document.getElementsByTagName(tagName);
       return (elements.length===0?undefined:elements);
     }
+
   };
 
   var remove = {
-    withId : function (id) {
+
+    byId : function (id) {
       var element = document.getElementById(id);
       element.parentNode.removeChild(element);
     },
+
     withClass : function (className) {
       document.getElementsByClassName(className).remove();
     },
+
     withTagName : function (tagName) {
       var elements = document.getElementsByTagName(tagName);
       document.getElementsByTagName(tagName).remove();
     }
+
   };
 
   var set = {
