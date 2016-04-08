@@ -33,7 +33,7 @@ This document is developed for describing the dusty.js - DOM Traversing library.
 
 ####ajax
 
-		This is used to wrap the AJAX methods.
+		This is used to wrap the AJAX methods and AJAX calls.
 
 #####request (method, url, data, callback)
 		
