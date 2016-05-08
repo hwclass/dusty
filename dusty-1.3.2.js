@@ -8,24 +8,28 @@
  * http://www.opensource.org/licenses/mit-license.php
  *
  * Launch  : October 2014
- * Version : 1.2.2
+ * Version : 1.3.2
  * Released: 2015
  *
  */
-;var dusty = (function(global, document, undefined) {
 
-  var config = {
+'use strict';
+
+;const dusty = ((global, document, undefined) => {
+
+  const config = {
     messages : {
       selectorCriteriaError : 'There is no any element specified.',
       noMarkupCode : 'There is no any markup code specified.'
     }
   };
 
-  var add = {
-    event : function(element, event, fn) {
-      var el = element[0];
-      function listenHandler(e) {
-        var ret = fn.apply(this, arguments);
+  const add = {
+
+    event: (element, event, fn) => {
+      let el = element[0];
+      listenHandler = (e) => {
+        let ret = fn.apply(this, arguments);
         if (ret === false) {
           e.stopPropagation();
           e.preventDefault();
@@ -41,13 +45,13 @@
       }
     },
 
-    customEvent : function (element, customEventName) {
+    customEvent: (element, customEventName) => {
       element.dispatchEvent(new CustomEvent(customEventName));
     },
 
-    element : function (element, markup) {
-      var result = false;
-      var selectorCriteria = null;
+    element: (element, markup) => {
+      let result = false,
+          selectorCriteria = null;
       if (dusty.utils.isUndefined(markup) || dusty.utils.isNull(markup)) {
         result = dusty.config.messages.selectorCriteriaError;
       } else {
@@ -63,9 +67,9 @@
       return (dusty.utils.isUndefined(result) || dusty.utils.isNull(result) ? console.log(result) : undefined);
     },
 
-    class : function (nodes, className) {
+    class: (nodes, className) => {
       for (var counterForNodes = 0, len = nodes.length; counterForNodes < len; counterForNodes++) {
-        var tempElement = nodes[counterForNodes];
+        let tempElement = nodes[counterForNodes];
         if (!has.class(tempElement), className) {
           nodes[counterForNodes].className += ' ' + className;
         }
@@ -74,23 +78,22 @@
 
   };
 
-  var remove = {
+  const remove = {
 
-    byId : function (id) {
-      element.parentNode.removeChild(document.getElementById(id));
+    byId: (id) => {
+      return element.parentNode.removeChild(document.getElementById(id));
     },
 
-    byClass : function (nodes, className) {
-      document.getElementsByClassName(className).remove();
+    byClass: (nodes, className) => {
+      return document.getElementsByClassName(className).remove();
     },
 
-    withTagName : function (tagName) {
-      var elements = document.getElementsByTagName(tagName);
-      document.getElementsByTagName(tagName).remove();
+    withTagName: (tagName) => {
+      return document.getElementsByTagName(tagName).remove();
     },
 
-    all : function (nodes) {
-      for (var counterForNodes = 0, len = nodes.length; counterForNodes < len; counterForNodes++) {
+    all: (nodes) => {
+      for (let counterForNodes = 0, len = nodes.length; counterForNodes < len; counterForNodes++) {
         if (nodes[counterForNodes]) {
           nodes[counterForNodes].parentNode.removeChild(nodes[counterForNodes]);
         }
@@ -99,48 +102,46 @@
 
   };
 
-  var ajax = {
+  const ajax = {
 
-    request : function (method, url, data, callback) {
-      var xhrReq;
-      var returnedData = null;
+    request: (method, url, data, callback) => {
+      let xhrReq,
+          returnedData = null,
+          postData = null,
+          transferComplete = () => {
+            return true;
+          };
       if (window.XMLHttpRequest) {
         xhrReq = new XMLHttpRequest();
       } else {
         xhrReq = new ActiveXObject("Microsoft.XMLHTTP");
       }
       xhrReq.addEventListener("load", transferComplete, false);
-      xhrReq.onreadystatechange = function() {
+      xhrReq.onreadystatechange = () => {
         if (xhrReq.readyState == 4 && xhrReq.status == 200) {
           callback(xhrReq.responseText);
         }
       }
       xhrReq.open(method, url, true);
-      var postData = null;
       if (method === 'POST') {
         postData = data
       }
       xhrReq.send(postData);
-      var transferComplete = function () {
-        return true;
-      }
     }
-
   };
 
-  var get = {
+  const get = {
 
-    byId : function(id) {
+    byId: (id) => {
       return document.getElementById(id);
     },
 
-    byClass : function(className) {
-      var elements = document.getElementsByClassName(className);
+    byClass: (className) => {
+      let elements = document.getElementsByClassName(className);
       return (elements.length===0?undefined:elements);
-      return this;
     },
 
-    withTagName : function(tagName) {
+    withTagName: (tagName) => {
       var elements = document.getElementsByTagName(tagName);
       return (elements.length===0?undefined:elements);
     }
@@ -148,15 +149,15 @@
   };
 
   var set = {
-    value : function(element, val) {
-      if(element.tagName && element.tagName.toLowerCase() == "textarea" || element.tagName.toLowerCase() == "input") {
+    value: (element, val) => {
+      if(element.tagName && element.tagName.toLowerCase() === "textarea" || element.tagName.toLowerCase() === "input") {
         element.value = val;
       } else {
         element.innerHTML = val;
       }
     },
-    HTML : function(element, markup) {
-      var el = element,
+    HTML: (element, markup) => {
+      let el = element,
           result = false;
       if (typeof el !== "undefined" && el !== null) {
         if (!dusty.utils.isUndefined(el) && !dusty.utils.isNull(el)) {
@@ -167,25 +168,25 @@
       }
       return (dusty.utils.isUndefined(result) || dusty.utils.isNull(result) ? console.log(result) : undefined);
     },
-    attr : function (id, attribute, value) {
+    attr: function (id, attribute, value) {
       document.getElementById(id).setAttribute(attribute, value);
     }
   };
 
-  var has = {
-    class : function (node, className) {
+  const has = {
+    class: (node, className) => {
       return (" " + node.className.split(/\s+/g).join(" ") + " ").indexOf(" " + className + " ") > -1;
     }
   };
 
-  var utils = {
-    isUndefined : function(obj) {
+  const utils = {
+    isUndefined : (obj) => {
       return (typeof obj === 'undefined');
     },
-    isNull : function (obj) {
+    isNull: (obj) => {
       return obj === null;
     },
-    isEmptyString : function (obj) {
+    isEmptyString: (obj) => {
       return (obj === '');
     }
   };
@@ -201,3 +202,5 @@
   };
 
 })(window, document);
+
+module.exports = dusty;
