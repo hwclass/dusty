@@ -24,5 +24,11 @@
   "bugs": {
     "url": "https://github.com/hwclass/dusty/issues"
   },
-  "homepage": "https://github.com/hwclass/dusty#readme"
+  "homepage": "https://github.com/hwclass/dusty#readme",
+  "devDependencies": {
+    "del": "^2.2.0",
+    "rollup": "^0.26.2",
+    "rollup-plugin-babel": "^2.4.0",
+    "rollup-plugin-uglify": "^0.3.1"
+  }
 }
