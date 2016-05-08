@@ -3,8 +3,8 @@
   "version": "1.3.2",
   "description": "A small library-like DOM traversing tool",
   "main": "dusty-1.3.2.js",
-  "jsnext:main": "main.mjs",
-  "browser": "main.browser.js",
+  "jsnext:main": "dusty-1.3.2.mjs",
+  "browser": "dusty-1.3.2.browser.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
