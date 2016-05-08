@@ -3,6 +3,8 @@
   "version": "1.3.2",
   "description": "A small library-like DOM traversing tool",
   "main": "dusty-1.3.2.js",
+  "jsnext:main": "main.mjs",
+  "browser": "main.browser.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,7 +27,7 @@
     "url": "https://github.com/hwclass/dusty/issues"
   },
   "homepage": "https://github.com/hwclass/dusty#readme",
-  "devDependencies": {
+  "dependencies": {
     "del": "^2.2.0",
     "rollup": "^0.26.2",
     "rollup-plugin-babel": "^2.4.0",

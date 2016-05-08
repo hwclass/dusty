@@ -34,7 +34,7 @@ const bundles = [
     moduleName: 'my-library'
   },
   {
-    format: 'umd', ext: '.min.js', plugins: [uglify()]
+    format: 'umd', ext: '.min.js', plugins: [uglify()],
     babelPresets: ['es2015-rollup', 'stage-1'], babelPlugins: [],
     moduleName: 'my-library', minify: true
   }
