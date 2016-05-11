@@ -26,12 +26,16 @@ dusty.set.value(dusty.get.withId('testId'), 'This is an input element.');
 
 ###Bind events to an element.
 ```javascript
-dusty.add.customEvent(dusty.get.withClass('testClass'), 'click', function () { console.log('clicked element.'); });
+dusty.add.customEvent(dusty.get.withClass('testClass'), 'click', function () { 
+	console.log('clicked element.');
+});
 ```
 
 ###Bind custom events to an element.
 ```javascript
-dusty.add.customEvent(dusty.get.withClass('testClass'), 'click', function () { console.log('clicked element.'); });
+dusty.add.customEvent(dusty.get.withClass('testClass'), 'click', function () {
+	console.log('clicked element.');
+});
 ```
 
 ###Make an AJAX request (with GET).
