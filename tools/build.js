@@ -60,12 +60,16 @@ for (const config of bundles) {
           plugins: config.babelPlugins,
         })
       ].concat(config.plugins),
-    }).then(bundle => bundle.write({
-      dest: `dist/${config.moduleName || 'main'}${config.ext}`,
-      format: config.format,
-      sourceMap: !config.minify,
-      moduleName: config.moduleName,
-    })));
+    }).then((bundle) => { 
+      console.log(222);
+      bundle.write({
+        dest: `dist/${config.moduleName || 'main'}${config.ext}`,
+        format: config.format,
+        sourceMap: !config.minify,
+        moduleName: config.moduleName,
+      });
+
+    }));
   }
 }
 
