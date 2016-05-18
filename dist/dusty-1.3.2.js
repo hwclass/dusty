@@ -1,5 +1,5 @@
 /*!
- * dusty : A small library-like DOM traversing tool
+ * dusty : A small library-like DOM traversing tool.
  *
  * Copyright (c) 2014 Barış Güler
  * http://hwclass.github.io
@@ -309,7 +309,7 @@
     isEmptyString: (obj) => {
       return (obj === '');
     }
-    
+
   };
 
   return {
