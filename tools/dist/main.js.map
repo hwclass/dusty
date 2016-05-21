@@ -1,1 +1,0 @@
-{"version":3,"file":"main.js","sources":["../../src/main.js"],"sourcesContent":["const subModuleA = require('sub-module-a');\nconst subModuleB = require('sub-module-b');\n\nmodule.exports = {\n\tsubModuleA: subModuleA,\n\tsubModuleB: subModuleB\t\n}"],"names":[],"mappings":";;AAAA,MAAM,aAAa,QAAQ,cAAR,CAAnB;AACA,MAAM,aAAa,QAAQ,cAAR,CAAnB;;AAEA,OAAO,OAAP,GAAiB;aACJ,UADI;aAEJ;CAFb"}

@@ -61,7 +61,7 @@ for (const config of bundles) {
       ].concat(config.plugins),
     }).then((bundle) => {
       bundle.write({
-        dest: `dist/${config.moduleName || 'main'}${config.ext}`,
+        dest: `../dist/${config.moduleName || 'main'}${config.ext}`,
         format: config.format,
         sourceMap: !config.minify,
         moduleName: config.moduleName,
