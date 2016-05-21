@@ -3,5 +3,6 @@ const subModuleB = require('sub-module-b');
 
 module.exports = {
 	subModuleA: subModuleA,
-	subModuleB: subModuleB	
-}
+	subModuleB: subModuleB
+};
+//# sourceMappingURL=main.mjs.map
