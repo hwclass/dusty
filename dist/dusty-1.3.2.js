@@ -4,13 +4,7 @@
   (factory());
 }(this, function () { 'use strict';
 
-  var subModuleA = require('sub-module-a');
-  var subModuleB = require('sub-module-b');
-
-  module.exports = {
-    subModuleA: subModuleA,
-    subModuleB: subModuleB
-  };
+  var event = require('event');
 
   var dusty = function (global, document, undefined) {
 
@@ -21,81 +15,8 @@
       }
     };
 
-    var subModules = {
-      subModuleA: subModuleA,
-      subModuleB: subModuleB
-    };
-
     var add = {
-
-      /**
-       * event() : The method for binding events for selected element(s)
-       *
-       * @param {object} element
-       * @param {string} event
-       * @param {function} fn
-      */
-      event: eventModule,
-
-      /**
-       * customEvent() : The method for binding custom events for selected element(s)
-       *
-       * @param {object} element
-       * @param {string} customEventName
-      */
-      customEvent: function customEvent(element, customEventName) {
-        element.dispatchEvent(new CustomEvent(customEventName));
-      },
-
-      /**
-       * element() : The method for appending a HTML code into an existing element in the DOM.
-       *
-       * @param {object} element
-       * @param {string} markup
-      */
-      element: function (_element) {
-        function element(_x, _x2) {
-          return _element.apply(this, arguments);
-        }
-
-        element.toString = function () {
-          return _element.toString();
-        };
-
-        return element;
-      }(function (element, markup) {
-        var result = false,
-            selectorCriteria = null;
-        if (dusty.utils.isUndefined(markup) || dusty.utils.isNull(markup)) {
-          result = dusty.config.messages.selectorCriteriaError;
-        } else {
-          if (!dusty.utils.isUndefined(dusty.get.byId(element)) && !dusty.utils.isNull(dusty.get.byId(element))) {
-            element = dusty.get.byId(elHTMLement);
-          } else if (!dusty.utils.isUndefined(dusty.get.byClass(element)) && !dusty.utils.isNull(dusty.get.byClass(element))) {
-            element = dusty.get.byClass(element);
-          } else {
-            result = dusty.config.messages.selectorCriteriaError;
-          }
-        }
-        element.innerHTML += markup;
-        return dusty.utils.isUndefined(result) || dusty.utils.isNull(result) ? console.log(result) : undefined;
-      }),
-
-      /**
-       * class() : The method for appending a class for the DOM nodes.
-       *
-       * @param {HTMLElement} nodes
-       * @param {string} className
-      */
-      class: function _class(nodes, className) {
-        for (var counterForNodes = 0, len = nodes.length; counterForNodes < len; counterForNodes++) {
-          var tempElement = nodes[counterForNodes];
-          if (!has.class(tempElement), className) {
-            nodes[counterForNodes].className += ' ' + className;
-          }
-        }
-      }
-
+      event: event
     };
 
     var remove = {

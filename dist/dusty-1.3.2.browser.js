@@ -1,105 +1,28 @@
-const subModuleA = require('sub-module-a');
-const subModuleB = require('sub-module-b');
+'use strict';
 
-module.exports = {
-  subModuleA: subModuleA,
-  subModuleB: subModuleB
-};
+var event = require('event');
 
-const dusty = ((global, document, undefined) => {
+var dusty = function (global, document, undefined) {
 
-  const config = {
+  var config = {
     messages: {
       selectorCriteriaError: 'There is no any element specified.',
       noMarkupCode: 'There is no any markup code specified.'
     }
   };
 
-  const subModules = {
-    subModuleA: subModuleA,
-    subModuleB: subModuleB
+  var add = {
+    event: event
   };
 
-  const add = {
-
-    /**
-     * event() : The method for binding events for selected element(s)
-     *
-     * @param {object} element
-     * @param {string} event
-     * @param {function} fn
-    */
-    event: eventModule,
-
-    /**
-     * customEvent() : The method for binding custom events for selected element(s)
-     *
-     * @param {object} element
-     * @param {string} customEventName
-    */
-    customEvent: (element, customEventName) => {
-      element.dispatchEvent(new CustomEvent(customEventName));
-    },
-
-    /**
-     * element() : The method for appending a HTML code into an existing element in the DOM.
-     *
-     * @param {object} element
-     * @param {string} markup
-    */
-    element: function (_element) {
-      function element(_x, _x2) {
-        return _element.apply(this, arguments);
-      }
-
-      element.toString = function () {
-        return _element.toString();
-      };
-
-      return element;
-    }((element, markup) => {
-      let result = false,
-          selectorCriteria = null;
-      if (dusty.utils.isUndefined(markup) || dusty.utils.isNull(markup)) {
-        result = dusty.config.messages.selectorCriteriaError;
-      } else {
-        if (!dusty.utils.isUndefined(dusty.get.byId(element)) && !dusty.utils.isNull(dusty.get.byId(element))) {
-          element = dusty.get.byId(elHTMLement);
-        } else if (!dusty.utils.isUndefined(dusty.get.byClass(element)) && !dusty.utils.isNull(dusty.get.byClass(element))) {
-          element = dusty.get.byClass(element);
-        } else {
-          result = dusty.config.messages.selectorCriteriaError;
-        }
-      }
-      element.innerHTML += markup;
-      return dusty.utils.isUndefined(result) || dusty.utils.isNull(result) ? console.log(result) : undefined;
-    }),
-
-    /**
-     * class() : The method for appending a class for the DOM nodes.
-     *
-     * @param {HTMLElement} nodes
-     * @param {string} className
-    */
-    class: (nodes, className) => {
-      for (var counterForNodes = 0, len = nodes.length; counterForNodes < len; counterForNodes++) {
-        let tempElement = nodes[counterForNodes];
-        if (!has.class(tempElement), className) {
-          nodes[counterForNodes].className += ' ' + className;
-        }
-      }
-    }
-
-  };
-
-  const remove = {
+  var remove = {
 
     /**
      * byId() : The method removes a DOM element specified id as an argument.
      *
      * @param {string} id
     */
-    byId: id => {
+    byId: function byId(id) {
       return element.parentNode.removeChild(document.getElementById(id));
     },
 
@@ -109,7 +32,7 @@ const dusty = ((global, document, undefined) => {
      * @param {HTMLElement} nodes
      * @param {string} className
     */
-    byClass: (nodes, className) => {
+    byClass: function byClass(nodes, className) {
       return document.getElementsByClassName(className).remove();
     },
 
@@ -118,7 +41,7 @@ const dusty = ((global, document, undefined) => {
      *
      * @param {string} tagName
     */
-    withTagName: tagName => {
+    withTagName: function withTagName(tagName) {
       return document.getElementsByTagName(tagName).remove();
     },
 
@@ -127,8 +50,8 @@ const dusty = ((global, document, undefined) => {
      *
      * @param {HTMLElement} nodes
     */
-    all: nodes => {
-      for (let counterForNodes = 0, len = nodes.length; counterForNodes < len; counterForNodes++) {
+    all: function all(nodes) {
+      for (var counterForNodes = 0, len = nodes.length; counterForNodes < len; counterForNodes++) {
         if (nodes[counterForNodes]) {
           nodes[counterForNodes].parentNode.removeChild(nodes[counterForNodes]);
         }
@@ -137,7 +60,7 @@ const dusty = ((global, document, undefined) => {
 
   };
 
-  const ajax = {
+  var ajax = {
 
     /**
      * request() : The method removes the whole DOM element's content given in an array
@@ -147,11 +70,11 @@ const dusty = ((global, document, undefined) => {
      * @param {object} data
      * @param {function} callback
     */
-    request: (method, url, data, callback) => {
-      let xhrReq,
+    request: function request(method, url, data, callback) {
+      var xhrReq = void 0,
           returnedData = null,
           postData = null,
-          transferComplete = () => {
+          transferComplete = function transferComplete() {
         return true;
       };
       if (window.XMLHttpRequest) {
@@ -160,7 +83,7 @@ const dusty = ((global, document, undefined) => {
         xhrReq = new ActiveXObject("Microsoft.XMLHTTP");
       }
       xhrReq.addEventListener("load", transferComplete, false);
-      xhrReq.onreadystatechange = () => {
+      xhrReq.onreadystatechange = function () {
         if (xhrReq.readyState == 4 && xhrReq.status == 200) {
           callback(xhrReq.responseText);
         }
@@ -174,14 +97,14 @@ const dusty = ((global, document, undefined) => {
 
   };
 
-  const get = {
+  var get = {
 
     /**
      * byId() : The method fetches a DOM element specified id as an argument.
      *
      * @param {string} id
     */
-    byId: id => {
+    byId: function byId(id) {
       return document.getElementById(id);
     },
 
@@ -191,8 +114,8 @@ const dusty = ((global, document, undefined) => {
      * @param {HTMLElement} nodes
      * @param {string} className
     */
-    byClass: className => {
-      let elements = document.getElementsByClassName(className);
+    byClass: function byClass(className) {
+      var elements = document.getElementsByClassName(className);
       return elements.length === 0 ? undefined : elements;
     },
 
@@ -201,7 +124,7 @@ const dusty = ((global, document, undefined) => {
      *
      * @param {string} tagName
     */
-    withTagName: tagName => {
+    withTagName: function withTagName(tagName) {
       var elements = document.getElementsByTagName(tagName);
       return elements.length === 0 ? undefined : elements;
     }
@@ -216,7 +139,7 @@ const dusty = ((global, document, undefined) => {
      * @param {HTMLElement} element
      * @param {string} val
     */
-    value: (element, val) => {
+    value: function value(element, val) {
       if (element.tagName && element.tagName.toLowerCase() === "textarea" || element.tagName.toLowerCase() === "input") {
         element.value = val;
       } else {
@@ -230,8 +153,8 @@ const dusty = ((global, document, undefined) => {
      * @param {HTMLElement} element
      * @param {string} markup
     */
-    HTML: (element, markup) => {
-      let el = element,
+    HTML: function HTML(element, markup) {
+      var el = element,
           result = false;
       if (typeof el !== "undefined" && el !== null) {
         if (!dusty.utils.isUndefined(el) && !dusty.utils.isNull(el)) {
@@ -256,7 +179,7 @@ const dusty = ((global, document, undefined) => {
 
   };
 
-  const has = {
+  var has = {
 
     /**
      * class() : The method checks if the HTML element has the specified class name or not.
@@ -264,20 +187,20 @@ const dusty = ((global, document, undefined) => {
      * @param {HTMLElement} node
      * @param {string} className
     */
-    class: (node, className) => {
+    class: function _class(node, className) {
       return (" " + node.className.split(/\s+/g).join(" ") + " ").indexOf(" " + className + " ") > -1;
     }
 
   };
 
-  const utils = {
+  var utils = {
 
     /**
      * isUndefined() : The method checks if specified obj is undefined or not.
      *
      * @param {object} obj
     */
-    isUndefined: obj => {
+    isUndefined: function isUndefined(obj) {
       return typeof obj === 'undefined';
     },
 
@@ -286,7 +209,7 @@ const dusty = ((global, document, undefined) => {
      *
      * @param {object} obj
     */
-    isNull: obj => {
+    isNull: function isNull(obj) {
       return obj === null;
     },
 
@@ -295,7 +218,7 @@ const dusty = ((global, document, undefined) => {
      *
      * @param {object} obj
     */
-    isEmptyString: obj => {
+    isEmptyString: function isEmptyString(obj) {
       return obj === '';
     }
 
@@ -310,7 +233,7 @@ const dusty = ((global, document, undefined) => {
     ajax: ajax,
     utils: utils
   };
-})(window, document);
+}(window, document);
 
 module.exports = dusty || {};
-//# sourceMappingURL=main.mjs.map
+//# sourceMappingURL=dusty-1.3.2.browser.js.map

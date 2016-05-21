@@ -31,12 +31,12 @@ const bundles = [
   {
     format: 'umd', ext: '.js', plugins: [],
     babelPresets: ['es2015-rollup', 'stage-1'], babelPlugins: [],
-    moduleName: 'dusty-1.3.2'
+    moduleName: pkg.name + '-' + pkg.version
   },
   {
     format: 'umd', ext: '.min.js', plugins: [uglify()],
     babelPresets: ['es2015-rollup', 'stage-1'], babelPlugins: [],
-    moduleName: 'dusty-1.3.2', minify: true
+    moduleName: pkg.name + '-' + pkg.version, minify: true
   }
 ];
 
@@ -61,7 +61,7 @@ for (const config of bundles) {
       ].concat(config.plugins),
     }).then((bundle) => {
       bundle.write({
-        dest: `../dist/${config.moduleName || 'main'}${config.ext}`,
+        dest: `../dist/${config.moduleName || pkg.name + '-' + pkg.version}${config.ext}`,
         format: config.format,
         sourceMap: !config.minify,
         moduleName: config.moduleName,
